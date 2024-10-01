@@ -14,15 +14,15 @@ const courses = [
             title: "Introduction to HTML",
             contents: [
               { content_type: "text", content: "Learn the basics of HTML." },
-              { content_type: "video", content: "https://example.com/html-intro" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "CSS Fundamentals",
             contents: [
               { content_type: "text", content: "Understanding CSS selectors and properties." },
-              { content_type: "quiz", content: "Quiz on CSS basics." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -35,6 +35,7 @@ const courses = [
               { content_type: "text", content: "An overview of JavaScript syntax and features." },
               { content_type: "video", content: "https://example.com/js-basics" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "DOM Manipulation",
@@ -42,6 +43,7 @@ const courses = [
               { content_type: "text", content: "Learn how to manipulate the Document Object Model." },
               { content_type: "quiz", content: "Quiz on DOM manipulation." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -58,8 +60,8 @@ const courses = [
             title: "Python Syntax and Semantics",
             contents: [
               { content_type: "text", content: "Introduction to Python programming." },
-              { content_type: "video", content: "https://example.com/python-basics" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "Data Structures in Python",
@@ -67,6 +69,7 @@ const courses = [
               { content_type: "text", content: "Exploring lists, tuples, and dictionaries." },
               { content_type: "quiz", content: "Quiz on Python data structures." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -79,6 +82,7 @@ const courses = [
               { content_type: "text", content: "Basic concepts of machine learning." },
               { content_type: "video", content: "https://example.com/ml-intro" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "Supervised Learning",
@@ -86,6 +90,7 @@ const courses = [
               { content_type: "text", content: "Understanding supervised learning techniques." },
               { content_type: "quiz", content: "Quiz on supervised learning." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -104,6 +109,7 @@ const courses = [
               { content_type: "text", content: "Overview of machine learning concepts." },
               { content_type: "video", content: "https://example.com/ml-overview" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "Types of Machine Learning",
@@ -111,6 +117,7 @@ const courses = [
               { content_type: "text", content: "Understanding supervised, unsupervised, and reinforcement learning." },
               { content_type: "quiz", content: "Quiz on types of machine learning." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -123,6 +130,7 @@ const courses = [
               { content_type: "text", content: "How to clean and prepare data for analysis." },
               { content_type: "video", content: "https://example.com/data-cleaning" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "Feature Engineering",
@@ -130,6 +138,7 @@ const courses = [
               { content_type: "text", content: "Creating features for better model performance." },
               { content_type: "quiz", content: "Quiz on feature engineering." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -148,6 +157,7 @@ const courses = [
               { content_type: "text", content: "Guide to set up React Native environment." },
               { content_type: "video", content: "https://example.com/react-native-setup" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "Components and Styling",
@@ -155,6 +165,7 @@ const courses = [
               { content_type: "text", content: "Understanding React Native components and styling." },
               { content_type: "quiz", content: "Quiz on components and styling." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -167,6 +178,7 @@ const courses = [
               { content_type: "text", content: "Learn about navigation libraries." },
               { content_type: "video", content: "https://example.com/react-native-navigation" },
             ],
+            completed: false, // Track completion status
           },
           {
             title: "State Management",
@@ -174,6 +186,7 @@ const courses = [
               { content_type: "text", content: "Understanding state management in React Native." },
               { content_type: "quiz", content: "Quiz on state management." },
             ],
+            completed: false, // Track completion status
           },
         ],
       },
@@ -195,4 +208,3 @@ const seedDatabase = async () => {
 };
 
 seedDatabase();
-

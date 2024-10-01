@@ -16,6 +16,8 @@ const courseSchema = new mongoose.Schema({
               content: String,
             },
           ],
+                // New field to track completion status
+                completed: { type: Boolean, default: false },
         },
       ],
     },

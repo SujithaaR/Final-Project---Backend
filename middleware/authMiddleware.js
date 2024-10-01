@@ -1,22 +1,28 @@
 const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
 
-    // Check if token is provided
     if (!token) {
-        return res.status(401).json({ message: 'No token provided, authorization denied' });
+        return res.status(401).json({ message: 'No token provided' });
     }
 
     try {
-        // Verify token using the secret
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded; // Attach user data to request object
-        next(); // Call next middleware or route handler
-    } catch (err) {
-        res.status(401).json({ message: 'Token is not valid', error: err.message });
+        req.user = await User.findById(decoded.id); // Attach user to request
+
+        if (!req.user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        next();
+    } catch (error) {
+        console.error("Authentication error:", error); // Log the error
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 };
 
-module.exports = authMiddleware; // No need for curly braces since it's a single export
+module.exports = authMiddleware;
+
 

@@ -8,7 +8,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.post('/creatediscussion',authMiddleware, createDiscussion);
 
 // GET route to get discussions by material
-router.get('/:quizId', getDiscussionsByQuizId);
+router.get('/quiz/:quizId', getDiscussionsByQuizId);
 
 module.exports = router;
 
