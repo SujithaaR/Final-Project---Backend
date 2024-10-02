@@ -130,3 +130,26 @@ exports.getAllUsers = async (req, res) => {
     return res.status(500).json({ message: "Error fetching users.", error });
   }
 };
+exports.updateTimeSpent = async (req, res) => {
+  const { sessionDuration } = req.body;
+
+    try {
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Check if the sessionDuration is a valid number
+        if (typeof sessionDuration !== 'number') {
+            return res.status(400).json({ message: 'Invalid session duration' });
+        }
+
+        user.timeSpent = (user.timeSpent || 0) + sessionDuration; // Increment time spent
+        await user.save();
+
+        res.status(200).json({ message: 'Time updated successfully' });
+    } catch (error) {
+        console.error("Error updating time spent:", error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
