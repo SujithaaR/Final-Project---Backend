@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 // Route to get all courses
-router.get('/courses',authMiddleware, getAllCourses);
+router.get('/courses', getAllCourses);
 
 // Route to get a course by ID
 router.get('/courses/:courseId', authMiddleware,getCourseById);

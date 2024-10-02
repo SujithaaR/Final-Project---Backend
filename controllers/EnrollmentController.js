@@ -1,5 +1,6 @@
 const Enrollment = require("../models/EnrollmentModel");
 const Course = require("../models/CourseModel");
+const Quiz=require("../models/QuizModel");
 const mongoose = require("mongoose");
 
 // Enroll a user in a course
@@ -158,9 +159,19 @@ const getEnrollmentDetails = async (req, res) => {
   }
 };
 
+// Fetch enrollment data
+const getEnrollments = async (req, res) => {
+  try {
+    const enrollments = await Enrollment.find({});
+    res.status(200).json(enrollments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 module.exports = {
   enrollUser,
   updateCourseProgress,
   getEnrollmentDetails,
   getEnrolledCourses,
+  getEnrollments,
 };

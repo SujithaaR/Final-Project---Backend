@@ -12,7 +12,8 @@ router.post('/login', login);
 // Get details of the authenticated user
 router.get('/user', authMiddleware, getUserDetails);
 
-
+// Route to get all users
+router.get("/users/all", getAllUsers);
 
 router.put('/users/update-time',authMiddleware,updateTimeSpent)
 module.exports = router;

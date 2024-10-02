@@ -120,16 +120,7 @@ exports.getUserDetails = async (req, res) => {
       .json({ message: "Error fetching user details.", error });
   }
 };
-// Get all users
-exports.getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find().select("-password"); // Exclude password from the response
-    return res.status(200).json(users);
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    return res.status(500).json({ message: "Error fetching users.", error });
-  }
-};
+
 exports.updateTimeSpent = async (req, res) => {
   const { sessionDuration } = req.body;
 
@@ -152,4 +143,14 @@ exports.updateTimeSpent = async (req, res) => {
         console.error("Error updating time spent:", error);
         res.status(500).json({ message: 'Server error' });
     }
+};
+
+// Get all users
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching users", error });
+  }
 };

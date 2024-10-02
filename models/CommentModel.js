@@ -5,7 +5,7 @@ const CommentSchema = new mongoose.Schema({
     enrollmentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Enrollment', required: true }, // Reference to the enrollment
     courseId: { type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true }, // Reference to the course
     content: { type: String, required: true }, // Comment content
-}, { timestamps: true }); // This will automatically add `createdAt` and `updatedAt`
+}, { timestamps: true }); 
 
 module.exports = mongoose.model('Comment', CommentSchema);
 

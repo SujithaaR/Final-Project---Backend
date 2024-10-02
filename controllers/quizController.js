@@ -53,3 +53,13 @@ exports.getQuizResults = async (req, res) => {
     res.status(500).json({ message: "Internal server error." });
   }
 };
+
+// Fetch quiz data
+exports.getQuizzes = async (req, res) => {
+  try {
+    const quizzes = await QuizResult.find({});
+    res.status(200).json(quizzes);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
