@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { enrollUser, getEnrollmentDetails,updateCourseProgress,submitQuizAnswers ,getEnrolledCourses} = require('../controllers/courseController');
+const { enrollUser, getEnrollmentDetails,updateCourseProgress,getEnrolledCourses} = require('../controllers/EnrollmentController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 // Route to enroll a user in a course
@@ -16,7 +16,5 @@ router.get('/enrollments/:enrollmentId', getEnrollmentDetails);
 // Route to update course progress
 router.put('/progress/update',authMiddleware, updateCourseProgress);
 
-// Route to submit quiz answers and get score
-router.post('/quiz/submit', submitQuizAnswers);
 
 module.exports = router;

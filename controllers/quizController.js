@@ -1,21 +1,55 @@
-const Quiz = require('../models/Quiz');
+const Enrollment = require("../models/EnrollmentModel");
+const QuizResult = require("../models/QuizModel"); // Import the QuizResult model
 
-// Controller to get quizzes by course ID
-const getQuizzesByCourseId = async (req, res) => {
-    const { courseId } = req.params; // Get course ID from request parameters
+// Submit quiz
+exports.submitQuiz = async (req, res) => {
+  const { userId, courseId, enrollmentId, totalScore, obtainedScore } =
+    req.body;
 
-    try {
-        const quizzes = await Quiz.find({ courseId })
-        return res.status(200).json(quizzes);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Error fetching quizzes.' });
+  try {
+    // Create a new quiz result entry
+    const quizResult = new QuizResult({
+      userId,
+      courseId,
+      enrollmentId,
+      totalScore, // Total score for the quiz
+      obtainedScore, // Score obtained by the user
+    });
+
+    // Save the quiz result to the database
+    await quizResult.save();
+
+    // Update the enrollment
+    await Enrollment.findByIdAndUpdate(
+      enrollmentId,
+      {
+        isQuizTaken: true,
+        quizScores: obtainedScore, // Update with the marks obtained
+      },
+      { new: true }
+    );
+
+    return res.status(201).json({ message: "Quiz submitted successfully!" });
+  } catch (error) {
+    console.error("Error submitting quiz:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// Function to fetch previous quiz results
+exports.getQuizResults = async (req, res) => {
+  const { userId, courseId, enrollmentId } = req.query;
+  console.log("Fetching quiz results for:", { userId, courseId, enrollmentId });
+  try {
+    const quiz = await QuizResult.findOne({ userId, courseId, enrollmentId });
+
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz results not found." });
     }
+
+    res.status(200).json(quiz);
+  } catch (error) {
+    console.error("Error fetching quiz results:", error);
+    res.status(500).json({ message: "Internal server error." });
+  }
 };
-
-module.exports = {
-    getQuizzesByCourseId
-};
-
-
-

@@ -1,14 +1,17 @@
-const CourseFeedback = require('../models/Feedback');
+const CourseFeedback = require('../models/FeedbackModel');
 
 // Create Feedback for a Course
 exports.createFeedback = async (req, res) => {
-    const { courseId, overallSatisfaction, contentQuality, instructorEffectiveness, comments } = req.body;
-    const userId = req.user.id; // Assuming user ID is attached to req.user by authentication middleware
-
+    const {userId, courseId,enrollmentId, overallSatisfaction, contentQuality, instructorEffectiveness, comments } = req.body;
+    // Ensure all required fields are present
+    if (!userId || !enrollmentId || !courseId || overallSatisfaction == null || contentQuality == null || instructorEffectiveness == null) {
+        return res.status(400).json({ message: 'All fields are required.' });
+    }
     try {
         const newFeedback = new CourseFeedback({
             courseId,
             userId,
+            enrollmentId,
             overallSatisfaction,
             contentQuality,
             instructorEffectiveness,
@@ -22,14 +25,3 @@ exports.createFeedback = async (req, res) => {
     }
 };
 
-// Get All Feedback for a Course
-exports.getFeedbackForCourse = async (req, res) => {
-    const { courseId } = req.params;
-
-    try {
-        const feedback = await CourseFeedback.find({ courseId }).populate('userId', 'username'); // Populate userId to get usernames
-        res.status(200).json(feedback);
-    } catch (err) {
-        res.status(500).json({ message: 'Failed to retrieve feedback', error: err.message });
-    }
-};

@@ -1,4 +1,5 @@
 // seed.js
+const mongoose = require('mongoose');
 const connectDB = require('../db');
 const Course = require('../models/LearningMaterial');
 
@@ -11,18 +12,28 @@ const courses = [
         title: "HTML & CSS",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(), // Add unique ID for each subtopic
             title: "Introduction to HTML",
             contents: [
-              { content_type: "text", content: "Learn the basics of HTML." },
+              {
+                _id: new mongoose.Types.ObjectId(), // Add unique ID for each content item
+                content_type: "text",
+                content: "Learn the basics of HTML.",
+                completed: false, // Track completion status
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "CSS Fundamentals",
             contents: [
-              { content_type: "text", content: "Understanding CSS selectors and properties." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Understanding CSS selectors and properties.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -30,20 +41,40 @@ const courses = [
         title: "JavaScript",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "JavaScript Basics",
             contents: [
-              { content_type: "text", content: "An overview of JavaScript syntax and features." },
-              { content_type: "video", content: "https://example.com/js-basics" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "An overview of JavaScript syntax and features.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/js-basics",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "DOM Manipulation",
             contents: [
-              { content_type: "text", content: "Learn how to manipulate the Document Object Model." },
-              { content_type: "quiz", content: "Quiz on DOM manipulation." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Learn how to manipulate the Document Object Model.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on DOM manipulation.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -57,19 +88,34 @@ const courses = [
         title: "Python Basics",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Python Syntax and Semantics",
             contents: [
-              { content_type: "text", content: "Introduction to Python programming." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Introduction to Python programming.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Data Structures in Python",
             contents: [
-              { content_type: "text", content: "Exploring lists, tuples, and dictionaries." },
-              { content_type: "quiz", content: "Quiz on Python data structures." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Exploring lists, tuples, and dictionaries.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on Python data structures.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -77,20 +123,40 @@ const courses = [
         title: "Machine Learning",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Introduction to Machine Learning",
             contents: [
-              { content_type: "text", content: "Basic concepts of machine learning." },
-              { content_type: "video", content: "https://example.com/ml-intro" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Basic concepts of machine learning.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/ml-intro",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Supervised Learning",
             contents: [
-              { content_type: "text", content: "Understanding supervised learning techniques." },
-              { content_type: "quiz", content: "Quiz on supervised learning." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Understanding supervised learning techniques.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on supervised learning.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -104,20 +170,40 @@ const courses = [
         title: "Introduction to Machine Learning",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "What is Machine Learning?",
             contents: [
-              { content_type: "text", content: "Overview of machine learning concepts." },
-              { content_type: "video", content: "https://example.com/ml-overview" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Overview of machine learning concepts.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/ml-overview",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Types of Machine Learning",
             contents: [
-              { content_type: "text", content: "Understanding supervised, unsupervised, and reinforcement learning." },
-              { content_type: "quiz", content: "Quiz on types of machine learning." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Understanding supervised, unsupervised, and reinforcement learning.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on types of machine learning.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -125,20 +211,40 @@ const courses = [
         title: "Data Preprocessing",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Data Cleaning Techniques",
             contents: [
-              { content_type: "text", content: "How to clean and prepare data for analysis." },
-              { content_type: "video", content: "https://example.com/data-cleaning" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "How to clean and prepare data for analysis.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/data-cleaning",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Feature Engineering",
             contents: [
-              { content_type: "text", content: "Creating features for better model performance." },
-              { content_type: "quiz", content: "Quiz on feature engineering." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Creating features for better model performance.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on feature engineering.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -152,20 +258,40 @@ const courses = [
         title: "React Native Basics",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Setting Up the Environment",
             contents: [
-              { content_type: "text", content: "Guide to set up React Native environment." },
-              { content_type: "video", content: "https://example.com/react-native-setup" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Guide to set up React Native environment.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/react-native-setup",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Components and Styling",
             contents: [
-              { content_type: "text", content: "Understanding React Native components and styling." },
-              { content_type: "quiz", content: "Quiz on components and styling." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Understanding React Native components and styling.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on components and styling.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },
@@ -173,20 +299,40 @@ const courses = [
         title: "Building Real-World Applications",
         subtopics: [
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "Navigation in React Native",
             contents: [
-              { content_type: "text", content: "Learn about navigation libraries." },
-              { content_type: "video", content: "https://example.com/react-native-navigation" },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Learn about navigation libraries.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "video",
+                content: "https://example.com/react-native-navigation",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
           {
+            _id: new mongoose.Types.ObjectId(),
             title: "State Management",
             contents: [
-              { content_type: "text", content: "Understanding state management in React Native." },
-              { content_type: "quiz", content: "Quiz on state management." },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "text",
+                content: "Understanding state management in React Native.",
+                completed: false,
+              },
+              {
+                _id: new mongoose.Types.ObjectId(),
+                content_type: "quiz",
+                content: "Quiz on state management.",
+                completed: false,
+              },
             ],
-            completed: false, // Track completion status
           },
         ],
       },

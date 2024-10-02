@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const courseSchema = new mongoose.Schema({
@@ -12,12 +11,12 @@ const courseSchema = new mongoose.Schema({
           title: String,
           contents: [
             {
+              _id: mongoose.Schema.Types.ObjectId, // Add unique ID for each content item
               content_type: { type: String, enum: ['text', 'video', 'quiz'] },
               content: String,
+              completed: { type: Boolean, default: false }, // Track if content is completed
             },
           ],
-                // New field to track completion status
-                completed: { type: Boolean, default: false },
         },
       ],
     },
@@ -27,3 +26,5 @@ const courseSchema = new mongoose.Schema({
 const Course = mongoose.model('Course', courseSchema);
 
 module.exports = Course;
+
+
