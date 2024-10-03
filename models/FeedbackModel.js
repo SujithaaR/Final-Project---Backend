@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const FeedbackSchema = new mongoose.Schema({
-    courseId: { type: mongoose.Schema.Types.ObjectId, ref: 'LearningMaterial', required: true }, 
+    courseId: { type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true }, 
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, 
     enrollmentId:{type:mongoose.Schema.Types.ObjectId,ref:'Enrollment',required:true},
     overallSatisfaction: { type: Number, min: 1, max: 5, required: true }, 

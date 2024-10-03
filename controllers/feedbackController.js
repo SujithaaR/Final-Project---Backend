@@ -1,4 +1,7 @@
 const CourseFeedback = require('../models/FeedbackModel');
+const Enrollment = require("../models/EnrollmentModel");
+const User = require('../models/UserModel');
+const Course = require('../models/CourseModel');
 
 // Create Feedback for a Course
 exports.createFeedback = async (req, res) => {
@@ -20,8 +23,29 @@ exports.createFeedback = async (req, res) => {
 
         await newFeedback.save();
         res.status(201).json({ message: 'Feedback submitted successfully', feedback: newFeedback });
+         // Update the enrollment
+    await Enrollment.findByIdAndUpdate(
+        enrollmentId,
+        {
+          isFeedback: true,
+        },
+        { new: true }
+      );
     } catch (err) {
         res.status(400).json({ message: 'Failed to submit feedback', error: err.message });
     }
 };
 
+// Fetch all Feedback
+exports.getAllFeedback = async (req, res) => {
+    try {
+        const feedbackList = await CourseFeedback.find()
+            .populate({ path: 'courseId', select: 'title' }) // Populate course title
+            .populate({ path: 'userId', select: 'username' }) // Populate user name
+            .populate({ path: 'enrollmentId' }); // Optionally populate enrollment details if needed
+        
+        res.status(200).json(feedbackList);
+    } catch (err) {
+        res.status(400).json({ message: 'Failed to fetch feedback', error: err.message });
+    }
+};

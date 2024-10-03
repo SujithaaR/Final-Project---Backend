@@ -54,12 +54,17 @@ exports.getQuizResults = async (req, res) => {
   }
 };
 
-// Fetch quiz data
+// Get all quiz results with user and course details
 exports.getQuizzes = async (req, res) => {
   try {
-    const quizzes = await QuizResult.find({});
-    res.status(200).json(quizzes);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+    const quizResults = await QuizResult.find()
+      .populate('userId', 'username') // Get only the username
+      .populate('courseId', 'title');  // Get only the title
+
+    return res.status(200).json(quizResults);
+  } catch (error) {
+    console.error("Error fetching all quiz results:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
+
