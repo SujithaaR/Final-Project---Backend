@@ -30,7 +30,21 @@ const getCourseById = async (req, res) => {
   }
 };
 
+
+const createCourse = async (req, res) => {
+ 
+  try {
+    const newCourse = new Course(req.body);
+    await newCourse.save();
+    res.status(201).json(newCourse);
+  } catch (error) {
+    console.error('Mongoose error:', error); // Log the full error
+    res.status(500).json({ message: 'Error creating course', error });
+  }
+};
+
 module.exports = {
   getAllCourses,
   getCourseById,
+  createCourse
 };
