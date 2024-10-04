@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, getUserDetails, getAllUsers,updateTimeSpent } = require('../controllers/UserController');
+const { register, login, getUserDetails, getAllUsers,updateTimeSpent,DeleteUser,editUser,getEnrollmentStats } = require('../controllers/UserController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 // User registration
@@ -16,6 +16,14 @@ router.get('/user', authMiddleware, getUserDetails);
 router.get("/users/all", getAllUsers);
 
 router.put('/users/update-time',authMiddleware,updateTimeSpent)
+
+router.delete('/users/admin/delete',DeleteUser)
+
+router.put('/edit/users',editUser)
+
+// Route to get enrollment statistics
+router.get('/enrollment/stats/admin', getEnrollmentStats);
+
 module.exports = router;
 
 

@@ -10,7 +10,7 @@ const {
 router.post('/addcomments', addComment);
 
 // Route to get all comments for a specific course
-router.get('/comment/:courseId', getComments);
+router.get('/comment/course/:courseId', getComments);
 
 router.get('/admin/all/comments',getAllComments)
 

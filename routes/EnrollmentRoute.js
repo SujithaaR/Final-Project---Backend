@@ -11,6 +11,7 @@ router.get('/enrolled-courses', authMiddleware, getEnrolledCourses);
 
 // Route to get enrollment details
 router.get('/enrollments/:enrollmentId', getEnrollmentDetails);
+
 // Route to update course progress
 router.put('/progress/update',authMiddleware, updateCourseProgress);
 

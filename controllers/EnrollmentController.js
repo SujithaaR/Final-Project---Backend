@@ -58,6 +58,7 @@ const enrollUser = async (req, res) => {
 // Get all enrolled courses for a user
 const getEnrolledCourses = async (req, res) => {
   const userId = req.user; // User ID from the authenticated request
+  console.log(userId)
   try {
     // Find all enrollments for the user
     const enrollments = await Enrollment.find({ userId }).populate("courseId"); // Populate course details
@@ -68,7 +69,7 @@ const getEnrolledCourses = async (req, res) => {
         .status(404)
         .json({ message: "No enrolled courses found for this user." });
     }
-
+    console.log(enrollments)
     // Return the enrolled courses along with their details
     return res.status(200).json(enrollments);
   } catch (error) {
