@@ -1,4 +1,6 @@
 const Course = require("../models/CourseModel");
+const Enrollment=require('../models/EnrollmentModel');
+
 
 // Controller to get all courses
 const getAllCourses = async (req, res) => {
@@ -43,8 +45,10 @@ const createCourse = async (req, res) => {
   }
 };
 
+
+
 module.exports = {
   getAllCourses,
   getCourseById,
-  createCourse
-};
+  createCourse,
+}
